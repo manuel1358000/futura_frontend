@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center">
+    <div class="bg-gray-200 rounded-lg p-4">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" (click)="togglePlay()">
+        {{ sound.playing() ? 'Pause' : 'Play' }}
+      </button>
+      <span class="text-gray-700 ml-4">{{ sound.playing() ? 'Playing' : 'Paused' }}</span>
+    </div>
+  </div>
+  
