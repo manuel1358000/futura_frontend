@@ -13,26 +13,24 @@ import { UserResponse } from '../../../../models/users/userResponse.model';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
-  signupForm: FormGroup;
-
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
-    this.signupForm = this.fb.group({
+  signinForm: FormGroup;
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.signinForm = this.fb.group({
       // Aquí defines los campos del formulario y sus validadores si los tienes
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-
   onSubmit() {
-    if (this.signupForm.valid) {
-      const credentials: User = this.signupForm.value;
-      this.authService.signIn(credentials)
+    if (this.signinForm.valid) {
+      const credentials: User = this.signinForm.value;
+      this.authService.login(credentials)
         .subscribe({
           next: (response: UserResponse) => {
             console.log("RESPONSE",response);
           },
-          error: (error)=>{
-            console.log("ocurrio un error");
+          error: (error: any)=>{
+            console.log("ocurrio un error",error);
           }
         });
     }
