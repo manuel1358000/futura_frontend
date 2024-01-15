@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import jwt from 'jsonwebtoken';
+import { JwtHelperService } from '@auth0/angular-jwt'; // Importa JwtHelperService
 import { User } from '../../models/users/user.model';
 
 @Injectable({
@@ -11,8 +11,9 @@ import { User } from '../../models/users/user.model';
 export class AuthService {
   private apiUrl = 'http://tu-backend-api/auth'; // Ajusta la URL según tu backend
   private tokenKey = ''; // Ajusta la clave según tu preferencia
+  private refreshTokenKey = 'refreshToken'; // Clave para el token de actualización
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   login(credentials: User): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
@@ -47,6 +48,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    this.removeRefreshToken();
     // Limpia cualquier otro dato de sesión que puedas almacenar
   }
 
@@ -57,17 +59,8 @@ export class AuthService {
       return false;
     }
 
-    try {
-      // Verificar la expiración del token
-      const decodedToken: any = jwt.verify(token, 'test1234'); // Ajusta la clave secreta según tu backend
-      return true;
-    } catch (error) {
-      // Si hay un error, el token no es válido
-      this.logout(); // O cualquier otra lógica que desees para manejar tokens no válidos
-      return false;
-    }
+    return !this.jwtHelper.isTokenExpired(token);
   }
-  
 
   private storeToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
@@ -78,14 +71,14 @@ export class AuthService {
   }
 
   private getRefreshToken(): string | null {
-    return localStorage.getItem('refreshToken');
+    return localStorage.getItem(this.refreshTokenKey);
   }
-  
+
   private setRefreshToken(refreshToken: string): void {
-    localStorage.setItem('refreshToken', refreshToken);
+    localStorage.setItem(this.refreshTokenKey, refreshToken);
   }
-  
+
   private removeRefreshToken(): void {
-    localStorage.removeItem('refreshToken');
-  }  
+    localStorage.removeItem(this.refreshTokenKey);
+  }
 }
