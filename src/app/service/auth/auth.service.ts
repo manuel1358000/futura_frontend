@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { JwtHelperService } from '@auth0/angular-jwt'; // Importa JwtHelperService
 import { User } from '../../models/users/user.model';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class AuthService {
   private tokenKey = ''; // Ajusta la clave según tu preferencia
   private refreshTokenKey = 'refreshToken'; // Clave para el token de actualización
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  constructor(private http: HttpClient) {}
 
   login(credentials: User): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
@@ -59,7 +58,7 @@ export class AuthService {
       return false;
     }
 
-    return !this.jwtHelper.isTokenExpired(token);
+    return true;
   }
 
   private storeToken(token: string): void {

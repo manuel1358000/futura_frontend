@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../service/auth/auth.service';
 import { User } from '../../../../models/users/user.model';
 import { UserResponse } from '../../../../models/users/userResponse.model';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-sign-in',

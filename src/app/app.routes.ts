@@ -22,18 +22,13 @@ export const routes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'sign-in', component: SignInComponent },  
             { path: 'contact', component: ContactComponent },
+            { path: 'unauthorized', component: UnauthorizedComponent },
+            { path: 'page-not-found', component: PageNotFoundComponent },
         ]
     },
     {
-        path:'unauthorized',
-        component: UnauthorizedComponent
-    },
-    {
         path: '**',
-        redirectTo: '/page-not-found'
+        redirectTo: '/page-not-found',
+        pathMatch: 'full'
     },
-    {
-        path:'page-not-found',
-        component: PageNotFoundComponent
-    }
 ];
