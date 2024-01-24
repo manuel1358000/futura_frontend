@@ -1,0 +1,10 @@
+audio::-webkit-media-controls-panel {
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    height: 50px; /* Ajusta la altura según sea necesario */
+}
+
+/* Otros estilos opcionales para mejorar la apariencia */
+audio {
+    width: 100%; /* Hace que el reproductor de audio ocupe todo el ancho disponible */
+    margin-bottom: 10px; /* Agrega un margen inferior para separarlo de otros elementos */
+}

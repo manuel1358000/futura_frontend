@@ -8,46 +8,38 @@ import { User } from '../../models/users/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://tu-backend-api/auth'; // Ajusta la URL según tu backend
-  private tokenKey = ''; // Ajusta la clave según tu preferencia
-  private refreshTokenKey = 'refreshToken'; // Clave para el token de actualización
+  private apiUrl = 'https://p94gioahu8.execute-api.us-east-2.amazonaws.com/Dev'; // Ajusta la URL según tu backend
+  private tokenKey = 'jwt_token'; // Ajusta la clave según tu preferencia
 
   constructor(private http: HttpClient) {}
 
   login(credentials: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          this.storeToken(response.token);
-        }
-      })
-    );
-  }
-
-  refreshToken(): Observable<any> {
-    const refreshToken = this.getRefreshToken();
-    if (!refreshToken) {
-      return throwError('No hay un token de actualización disponible.');
-    }
-
-    return this.http.post(`${this.apiUrl}/refresh-token`, { refreshToken }).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          this.storeToken(response.token);
-        }
+    return this.http.post(`${this.apiUrl}/auth`, credentials).pipe(
+      catchError((error: any) => {
+        // Handle errors here if needed
+        return throwError(() => error);
       }),
-      catchError((error) => {
-        // Manejar errores de renovación de token aquí
-        // Por ejemplo, redirigir al usuario a la página de inicio de sesión
-        this.logout();
-        return throwError(error);
+      tap((response: any) => {
+
+        if (response && response.statusCode) {
+          if (response.statusCode === 401) {
+            throw new Error(response.body);
+          } else if (response.statusCode === 500) {
+            throw new Error('Error interno del servidor. Por favor, inténtalo de nuevo más tarde.');
+          }
+          // Add more conditions as needed
+        }
+  
+        // Continue with your logic here
+        if (response.body.token) {
+          this.storeToken(response.body.token);
+        }
       })
     );
   }
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    this.removeRefreshToken();
     // Limpia cualquier otro dato de sesión que puedas almacenar
   }
 
@@ -67,17 +59,5 @@ export class AuthService {
 
   private getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
-  }
-
-  private getRefreshToken(): string | null {
-    return localStorage.getItem(this.refreshTokenKey);
-  }
-
-  private setRefreshToken(refreshToken: string): void {
-    localStorage.setItem(this.refreshTokenKey, refreshToken);
-  }
-
-  private removeRefreshToken(): void {
-    localStorage.removeItem(this.refreshTokenKey);
   }
 }

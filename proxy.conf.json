@@ -1,0 +1,9 @@
+{
+    "/dev": {
+      "target": "https://p94gioahu8.execute-api.us-east-2.amazonaws.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
