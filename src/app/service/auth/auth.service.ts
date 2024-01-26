@@ -11,7 +11,7 @@ export class AuthService {
   private apiUrl = 'https://p94gioahu8.execute-api.us-east-2.amazonaws.com/Dev'; // Ajusta la URL según tu backend
   private tokenKey = 'jwt_token'; // Ajusta la clave según tu preferencia
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(credentials: User): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth`, credentials).pipe(
@@ -20,6 +20,7 @@ export class AuthService {
         return throwError(() => error);
       }),
       tap((response: any) => {
+        console.log("response", response);
 
         if (response && response.statusCode) {
           if (response.statusCode === 401) {
@@ -29,10 +30,27 @@ export class AuthService {
           }
           // Add more conditions as needed
         }
-  
-        // Continue with your logic here
-        if (response.body.token) {
-          this.storeToken(response.body.token);
+
+        console.log("response.body", response.body);
+
+        // Verifica si response.body es una cadena y conviértela a objeto si es necesario
+        let responseBody;
+        if (typeof response.body === 'string') {
+          try {
+            responseBody = JSON.parse(response.body);
+          } catch (error) {
+            console.error('Error al parsear el cuerpo de la respuesta como JSON:', error);
+          }
+        } else {
+          responseBody = response.body;
+        }
+
+        console.log("responseBody", responseBody);
+
+        // Verifica si responseBody tiene la propiedad 'token'
+        if (responseBody && responseBody.token) {
+          console.log("ESTA AGREGADO TODO");
+          this.storeToken(responseBody.token);
         }
       })
     );

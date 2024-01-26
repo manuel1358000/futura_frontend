@@ -34,7 +34,7 @@ export class SignInComponent {
 
       this.authService.login(credentials).subscribe({
         next: (response: UserResponse) => {
-          console.log("response",response);
+          console.log("response sign-in",response);
           this.router.navigate(['/ad-administrator/administration']);
         },
         error: (error: any) => {

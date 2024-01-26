@@ -19,11 +19,10 @@ export const routes: Routes = [
         path: '',
         component: PublicLayoutComponent,
         children: [
-            { path: '', component: HomeComponent },
-            { path: 'sign-in', component: SignInComponent },  
-            { path: 'contact', component: ContactComponent },
-            { path: 'unauthorized', component: UnauthorizedComponent },
-            { path: 'page-not-found', component: PageNotFoundComponent },
+            { path: '', loadChildren: () => import('./pages/public/dashboard/dashboard-routing.module').then(m => m.DashboardRoutingModule) },
+            { path: 'sign-in', loadChildren: () => import('./pages/public/authentication/authentication.module').then(m => m.AuthenticationModule) },
+            { path: 'unauthorized', loadComponent: ()=> UnauthorizedComponent },
+            { path: 'page-not-found', loadComponent: ()=> PageNotFoundComponent },
         ]
     },
     {
