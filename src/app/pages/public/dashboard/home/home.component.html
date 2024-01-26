@@ -7,7 +7,7 @@
                 <div class="p-4">
                     <div class="max-w-md mx-auto p-2 rounded-lg">
                         <div class="flex items-center justify-center">
-                            <img src="../../../../assets/img/futura_923.png" class="w-20 sm:w-32 md:w-40 lg:w-48" alt="Futura TV" />
+                            <img src="../../../../assets/img/envivo.gif" class="w-30 sm:w-32 md:w-40 lg:w-48" alt="Futura TV" />
                         </div>
                         <!-- Controles del reproductor -->
                         <div class="flex items-center justify-center space-x-4">
@@ -24,24 +24,24 @@
                 <!-- Image gallery -->
                 <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                     <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-                        <img src="https://futuraradiofrontend.s3.us-east-2.amazonaws.com/Anuncio2"
+                        <img [src]="obtenerAnuncioPorTag('Anuncio2')"
                             alt="Two each of gray, white, and black shirts laying flat."
                             class="h-full w-full object-cover object-center">
                     </div>
                     <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                         <div class="aspect-h-3 aspect-w-3 overflow-hidden rounded-lg">
-                            <img src="https://futuraradiofrontend.s3.us-east-2.amazonaws.com/Anuncio3"
+                            <img [src]="obtenerAnuncioPorTag('Anuncio3')"
                                 alt="Model wearing plain black basic tee."
                                 class="h-full w-full object-cover object-center">
                         </div>
                         <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                            <img src="https://futuraradiofrontend.s3.us-east-2.amazonaws.com/Anuncio4"
+                            <img [src]="obtenerAnuncioPorTag('Anuncio4')"
                                 alt="Model wearing plain gray basic tee."
                                 class="h-full w-full object-cover object-center">
                         </div>
                     </div>
                     <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-                        <img src="https://futuraradiofrontend.s3.us-east-2.amazonaws.com/Anuncio5"
+                        <img [src]="obtenerAnuncioPorTag('Anuncio5')"
                             alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
                     </div>
 
@@ -49,21 +49,26 @@
                 
                         <!-- Imagen 1 para pantallas pequeñas -->
                         <div class="aspect-h-3 aspect-w-3 overflow-hidden rounded-lg">
-                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
+                            <img [src]="obtenerAnuncioPorTag('Anuncio2')"
                                 alt="Model wearing plain black basic tee."
                                 class="h-full w-full object-cover object-center">
                         </div>
             
                         <!-- Imagen 2 para pantallas pequeñas -->
                         <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
+                            <img [src]="obtenerAnuncioPorTag('Anuncio3')"
                                 alt="Model wearing plain gray basic tee."
                                 class="h-full w-full object-cover object-center">
                         </div>
             
                         <!-- Imagen 3 para pantallas pequeñas -->
                         <div class="lg:hidden aspect-h-5 aspect-w-4 sm:overflow-hidden sm:rounded-lg">
-                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
+                            <img [src]="obtenerAnuncioPorTag('Anuncio4')"
+                                alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
+                        </div>
+                        <!-- Imagen 3 para pantallas pequeñas -->
+                        <div class="lg:hidden aspect-h-5 aspect-w-4 sm:overflow-hidden sm:rounded-lg">
+                            <img [src]="obtenerAnuncioPorTag('Anuncio5')"
                                 alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
                         </div>
                     </div>
