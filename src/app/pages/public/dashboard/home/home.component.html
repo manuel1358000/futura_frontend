@@ -2,7 +2,7 @@
     <section class="flex justify-center bg-gray-100 w-full">
         <div class="bg-white mt-6 w-3/4">
             <!-- component -->
-            <div class="max-w-2xl mx-auto bg-gray-100 rounded-lg overflow-hidden shadow-md mt-6">
+            <div class="max-w-2xl mx-auto bg-gray-100 rounded-lg overflow-hidden shadow-md mt-6 mb-0">
 
                 <div class="p-4">
                     <div class="max-w-md mx-auto p-2 rounded-lg">
@@ -12,7 +12,7 @@
                         <!-- Controles del reproductor -->
                         <div class="flex items-center justify-center space-x-4">
                             <audio controls autoplay muted crossorigin="anonymous">
-                                <source src="http://186.151.171.157:8000/mystream.mp3" type="audio/mp3">
+                                <source src="http://186.151.171.157/:8000/mystream.mp3" type="audio/mp3">
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
@@ -20,59 +20,30 @@
                 </div>
             </div>
 
-            <div class="pt-6 pb-6">
+            <div>
                 <!-- Image gallery -->
-                <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-                    <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-                        <img [src]="obtenerAnuncioPorTag('Anuncio2')"
-                            alt="Two each of gray, white, and black shirts laying flat."
-                            class="h-full w-full object-cover object-center">
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-8 mx-auto flex flex-wrap">
+                      <div class="flex flex-wrap md:-m-2 -m-1">
+                        <div class="flex flex-wrap w-1/2">
+                          <div class="md:p-2 p-1 w-1/2">
+                            <img alt="gallery" class="w-full object-cover h-full object-center block" [src]="obtenerAnuncioPorTag('Anuncio2')">
+                          </div>
+                          <div class="md:p-2 p-1 w-1/2">
+                            <img alt="gallery" class="w-full object-cover h-full object-center block" [src]="obtenerAnuncioPorTag('Anuncio3')">
+                          </div>
+                          <div class="md:p-2 p-1 w-full">
+                            <img alt="gallery" class="w-full h-full object-cover object-center block" [src]="obtenerAnuncioPorTag('Anuncio4')">
+                          </div>
+                        </div>
+                        <div class="flex flex-wrap w-1/2">
+                          <div class="md:p-2 p-1 w-full">
+                            <img alt="gallery" class="w-full h-full object-cover object-center block" [src]="obtenerAnuncioPorTag('Anuncio5')">
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                        <div class="aspect-h-3 aspect-w-3 overflow-hidden rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio3')"
-                                alt="Model wearing plain black basic tee."
-                                class="h-full w-full object-cover object-center">
-                        </div>
-                        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio4')"
-                                alt="Model wearing plain gray basic tee."
-                                class="h-full w-full object-cover object-center">
-                        </div>
-                    </div>
-                    <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-                        <img [src]="obtenerAnuncioPorTag('Anuncio5')"
-                            alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
-                    </div>
-
-                    <div class="lg:col-span-3 lg:hidden sm:grid sm:grid-cols-1 sm:gap-y-8">
-                
-                        <!-- Imagen 1 para pantallas pequeñas -->
-                        <div class="aspect-h-3 aspect-w-3 overflow-hidden rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio2')"
-                                alt="Model wearing plain black basic tee."
-                                class="h-full w-full object-cover object-center">
-                        </div>
-            
-                        <!-- Imagen 2 para pantallas pequeñas -->
-                        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio3')"
-                                alt="Model wearing plain gray basic tee."
-                                class="h-full w-full object-cover object-center">
-                        </div>
-            
-                        <!-- Imagen 3 para pantallas pequeñas -->
-                        <div class="lg:hidden aspect-h-5 aspect-w-4 sm:overflow-hidden sm:rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio4')"
-                                alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
-                        </div>
-                        <!-- Imagen 3 para pantallas pequeñas -->
-                        <div class="lg:hidden aspect-h-5 aspect-w-4 sm:overflow-hidden sm:rounded-lg">
-                            <img [src]="obtenerAnuncioPorTag('Anuncio5')"
-                                alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
-                        </div>
-                    </div>
-                </div>
+                  </section>
             </div>
         </div>
     </section>
