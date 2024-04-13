@@ -8,7 +8,7 @@ import { User } from '../../models/users/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://p94gioahu8.execute-api.us-east-2.amazonaws.com/Dev'; // Ajusta la URL según tu backend
+  private apiUrl = 'https://ejy1yo74ve.execute-api.us-east-2.amazonaws.com/prod'; // Ajusta la URL según tu backend
   private tokenKey = 'jwt_token'; // Ajusta la clave según tu preferencia
 
   constructor(private http: HttpClient) { }

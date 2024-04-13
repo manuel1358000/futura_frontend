@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class AnunciosService {
 
-  private apiUrl = 'https://p94gioahu8.execute-api.us-east-2.amazonaws.com/Dev/';
+  private apiUrl = 'https://ejy1yo74ve.execute-api.us-east-2.amazonaws.com/prod';
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class AnunciosService {
   subirAnuncio(apiData:any): Observable<any>{
     // Realizar la solicitud HTTP a la API
     console.log("paso por la subida de archivos");
-    return this.http.put('https://p94gioahu8.execute-api.us-east-2.amazonaws.com/Dev/', { body: JSON.stringify(apiData) });
+    return this.http.put('https://ejy1yo74ve.execute-api.us-east-2.amazonaws.com/prod', { body: JSON.stringify(apiData) });
   }
 
 }

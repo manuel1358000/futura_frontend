@@ -13,7 +13,7 @@ export class RadioPlayerComponent {
 
   constructor() {
     this.sound = new Howl({
-      src: ['http://192.168.1.27:8000/mystream.mp3'], // Reemplaza con la URL de tu streaming de radio
+      src: ['http://stream.futuraradio.com.gt:8000/mystream.mp3'], // Reemplaza con la URL de tu streaming de radio
       format: ['mp3'], // El formato del streaming de radio
       html5: true, // Forzar el uso de HTML5 Audio
       autoplay: true, // Opcional: reproduce automáticamente al iniciar
