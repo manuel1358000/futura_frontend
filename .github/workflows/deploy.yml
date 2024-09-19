@@ -78,9 +78,9 @@ jobs:
       - name: Build Angular app
         run: npm run build  # Cambia el comando si usas otro entorno (dev o prod)
 
-      - name: Create S3 Bucket
-        run: |
-          aws s3 mb s3://futura-tv-${{ env.ENVIRONMENT_NAME }} --region us-east-1
+      # - name: Create S3 Bucket
+      #   run: |
+      #     aws s3 mb s3://futura-tv-${{ env.ENVIRONMENT_NAME }} --region us-east-1
 
       - name: Deploy to S3
         run: |
