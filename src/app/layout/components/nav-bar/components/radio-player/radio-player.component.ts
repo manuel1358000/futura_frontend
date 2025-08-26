@@ -13,7 +13,7 @@ export class RadioPlayerComponent {
 
   constructor() {
     this.sound = new Howl({
-      src: ['https://afef6eca9295.ngrok.app/mystream.mp3'], // Reemplaza con la URL de tu streaming de radio
+      src: ['https://f23f4b8ee8f5.ngrok.app/mystream.mp3'], // Reemplaza con la URL de tu streaming de radio
       format: ['mp3'], // El formato del streaming de radio
       html5: true, // Forzar el uso de HTML5 Audio
       autoplay: true, // Opcional: reproduce automáticamente al iniciar
